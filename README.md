@@ -2,14 +2,14 @@
 
 roguelite style typing game
 
-TODO;
-GRAPHICS
- - UI design
- - player **DONE**
- - enemy
- - bg parallax
+TODO
+**GRAPHICS**
+ * UI design
+ * player **DONE**
+ * enemy
+ * bg parallax
 
-CODING
+**CODING**
 * turn enemy into a superclass to house different types of enemies
 
 * import and implement word bank **DONE**
@@ -21,16 +21,16 @@ CODING
 * progress bar
 * screenshake
 
-SFX
+**SFX**
 * light taps for every keypress
 * heavy taps for every enter
 * medium taps for every enter that doesnt kill, and spaces
 
-GAMEPLAY
+**GAMEPLAY**
 * +risk +reward type upgrade mechanics
 * ending or endless?
 
-CREDITS
+**CREDITS**
 * FONT
 https://speakthesky.itch.io/typeface-lilmrkr 
 https://twitter.com/SpeakTheSky
