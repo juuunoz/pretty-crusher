@@ -2,3 +2,4 @@
 * text=auto
 *.ShaderLab linguist-detectable=false
 *.HLSL linguist-detectable=false
+*.csharp linguist-detectable=true
