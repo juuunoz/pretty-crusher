@@ -3,6 +3,7 @@
 roguelite style typing game
 
 TODO
+
 **GRAPHICS**
  * UI design
  * ~~player~~
