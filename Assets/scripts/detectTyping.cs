@@ -42,6 +42,7 @@ public class detectTyping : MonoBehaviour
             }
             else if (typedWord.Length <= maxTypedWords) //type the char
             {
+                ScreenshakeController.instance.shakeScreen(.15f, .5f);
                 typedWord += c;
             }
         }

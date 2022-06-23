@@ -2,21 +2,21 @@
 
 GRAPHICS
  - UI design
- - player (2.5D paper cutout style?)DONE
+ - player (2.5D paper cutout style?)**DONE**
  - enemy
  - bg parallax
 
 CODING
 * turn enemy into a superclass to house different types of enemies
 
-* import and implement word bank DONE
+* import and implement word bank **DONE**
 	* spawn enemies by length of attackword
-* varying y spawn DONE
+* varying y spawn **DONE**
 * prevent enemies from spawning on top of each other
 * sorting sprite render order by y level
-* player resource bars (health, gold, mana) DONE (kinda)
-* indication of progress to next shop/rest stop save spot
-* screenshake
+* player resource bars (health, gold, mana) **DONE**
+* indication of progress to next shop/rest stop save spot **DONE**
+* oscillating screenshake
 
 SFX
 * light taps for every keypress
