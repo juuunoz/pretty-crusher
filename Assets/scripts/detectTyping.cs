@@ -42,7 +42,6 @@ public class detectTyping : MonoBehaviour
             }
             else if (typedWord.Length <= maxTypedWords) //type the char
             {
-                ScreenshakeController.instance.shakeScreen(.15f, .5f);
                 typedWord += c;
             }
         }
@@ -58,8 +57,9 @@ public class detectTyping : MonoBehaviour
         {
             if (x.attackText == word)
             {
-                x.die();
+                x.die(); //dont worry.. this only kills one enemy with that word
                 enemiesOnScreen.Remove(x);
+                this.GetComponent<screenshake>().FireOnce(.5f);
                 return true;
             }
         }

@@ -43,18 +43,21 @@ public class spawnerBehaviour : MonoBehaviour
         
         foreach (enemyScript x in enemiesOnScreen)
         {
-            string attackText = x.attackText;
+            string attackText = x.attackText; //the enemies text to be typed 
             string similarWords = "";
             int i = 0;
 
             while (i < typedWord.Length)
             {
-                //IF THE PLAYER TYPES MORE THAN THE ATTACK TEXT, IT ERRORS
-                if (!(typedWord[i] == attackText[i]))
+                if (i > attackText.Length-1 || !(typedWord[i] == attackText[i]))
                 {
-                    break;
+                    break; //no need to check if future letters match
                 }
-                similarWords += attackText[i];
+                else 
+                {
+                    similarWords += attackText[i];
+                }
+                
                 i++;
             }
             x.typed = similarWords;

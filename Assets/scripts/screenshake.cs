@@ -4,50 +4,59 @@ using UnityEngine;
 
 public class screenshake : MonoBehaviour
 {
-    public static ScreenshakeController instance;
-
-    public float shakeDuration;
-    public float shakePower;
-    private float shakeFadeDuration;
-    // Start is called before the first frame update
-    void Start()
-    {
-        instance = this;
-    }
+    public Transform target;
+    public Vector2 seed;
+    
+    float speed = 20f;
+    float maxMagnitude = .3f;
+    float noiseMagnitude;
+    Vector2 dir = Vector2.right;
+    float fadeOut = 1f;
+    bool shakeEnabled = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("s"))
+        if (shakeEnabled)
         {
-            shakeScreen(0.15f, .5f);
+            var sin = Mathf.Sin(speed*(seed.x+seed.y+Time.time));
+            var direction = dir + GetNoise();
+            direction.Normalize();
+            var delta = direction*sin;
+
+            target.localPosition = delta*maxMagnitude*fadeOut;
         }
+
     }
 
-    private float shakeX = 0f;
-    private float shakeY = 0f;
-
-    private void LateUpdate() 
+    public void FireOnce(float duration)
     {
-        if (shakeDuration > 0)
-        {
-            shakeDuration -= Time.deltaTime;
-            transform.position += new Vector3(-shakeX, -shakeY, 0f);
-            
+        StopAllCoroutines();
+        StartCoroutine(ShakeAndFade(duration));
+    }
 
-            transform.position += new Vector3(shakeX, shakeY, 0f);
-            shakePower = Mathf.MoveTowards(shakePwer, 0f, shakeFadeDuration*Time.deltaTime);
+    public IEnumerator ShakeAndFade(float fade_duration)
+    {
+        var fade_start_time = Time.time;
+        var fade_end_time = fade_start_time + fade_duration;
+        shakeEnabled = true;
+        fadeOut = 1f;
+
+        while (Time.time < fade_end_time)
+        {
+            yield return null;
+            var t = 1f - Mathf.InverseLerp(fade_start_time, fade_end_time, Time.time);
+            fadeOut = t;
         }
+        shakeEnabled = false;
         
     }
+        
 
-    private void shakeScreen(float duration, float power)
+    Vector2 GetNoise()
     {
-        shakeDuration = duration;
-        shakePower = power;
-        shakeX = Random.Range(-1f,1f) * shakePower;
-        shakeY = Random.Range(-1f,1f) * shakePower;
-
-        shakeFadeDuration = power/duration;
+        var time = Time.time;
+        Vector2 noiseMagnitude = new Vector2(Mathf.PerlinNoise(seed.x, time) - .5f, Mathf.PerlinNoise(seed.y, time) - .5f);
+        return noiseMagnitude;
     }
 }
