@@ -3,26 +3,27 @@
 roguelite style typing game
 
 TODO
+
 **GRAPHICS**
  * UI design
- * player **DONE**
+ * ~~player~~
  * enemy
  * bg parallax
 
 **CODING**
 * turn enemy into a superclass to house different types of enemies
-* import and implement word bank **DONE**
+* ~~import and implement word bank~~
 	* spawn enemies by length of attackword
-* varying y spawn **DONE**
+* ~~varying y spawn~~
 * prevent enemies from spawning too close to eachother of each other (covering words)
 * looping background
 * sorting sprite render order by y level
-* player resource bars **DONE**
-* progress bar **DONE**
+* ~~player resource bars~~
+* ~~progress bar~~
 * start and end screen
 
 **FX**
-* screenshake
+* screenshake **WIP**
 * particle path from player to enemy
 
 **SFX**
