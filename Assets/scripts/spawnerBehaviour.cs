@@ -22,6 +22,7 @@ public class spawnerBehaviour : MonoBehaviour
     void Start()
     {
         wordBank = wordsRaw.text.Split('\n');
+        sortLowHigh(wordBank);
         for (int i=0; i<wordBank.Length; i++)
         {
             if (wordBank[i].Length > 12)
@@ -38,9 +39,13 @@ public class spawnerBehaviour : MonoBehaviour
         updateEnemyDisplays();
     }
 
-    private void updateEnemyDisplays()
+    private void sortLowHigh(string[] x)
     {
         
+    }
+
+    private void updateEnemyDisplays()
+    { 
         foreach (enemyScript x in enemiesOnScreen)
         {
             string attackText = x.attackText; //the enemies text to be typed 

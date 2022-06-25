@@ -6,7 +6,7 @@ TODO
 
 **GRAPHICS**
  * UI design
- * ~~player~~
+ * player **rework- neutral sprite (redesign character) + attack animation**
  * enemy
  * bg parallax
 
@@ -20,10 +20,10 @@ TODO
 * sorting sprite render order by y level
 * ~~player resource bars~~
 * ~~progress bar~~
-* start and end screen
+* start, end, loadout and midway screen
 
 **FX**
-* screenshake **WIP**
+* ~~modular screenshake~~
 * particle path from player to enemy
 
 **SFX**
