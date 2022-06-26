@@ -1,4 +1,3 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-*.dgsl linguist-detectable=false
-*.hlsl linguist-detectable=false
+Assets/TextMesh?Pro/* linguist-vendored
