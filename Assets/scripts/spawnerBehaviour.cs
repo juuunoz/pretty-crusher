@@ -22,7 +22,7 @@ public class spawnerBehaviour : MonoBehaviour
     void Start()
     {
         wordBank = wordsRaw.text.Split('\n');
-        sortLowHigh(wordBank);
+        mergeSort(wordBank, 0, wordBank.Length-1);
         for (int i=0; i<wordBank.Length; i++)
         {
             if (wordBank[i].Length > 12)
@@ -39,10 +39,21 @@ public class spawnerBehaviour : MonoBehaviour
         updateEnemyDisplays();
     }
 
-    private void sortLowHigh(string[] x)
+    private void mergeSort(string[] x, int l, int r)
     {
+        if (l < r)
+        {
+            int m = (l + r)/2;
+
+            mergeSort(x, l, m);
+            mergeSort(x, m+1, r);
+
+            merge(x, l, m, r);
+        }
         
     }
+
+    private void merge(string[] x, int l, int m,, int r){};
 
     private void updateEnemyDisplays()
     { 

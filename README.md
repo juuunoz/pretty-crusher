@@ -6,21 +6,23 @@ TODO
 
 **GRAPHICS**
  * UI design
- * player **rework- neutral sprite (redesign character) + attack animation**
+ * player **rework- neutral sprite (redesign character) + attack animation** **WIP**
  * enemy
  * bg parallax
 
 **CODING**
 * turn enemy into a superclass to house different types of enemies
 * ~~import and implement word bank~~
-	* spawn enemies by length of attackword
+	* spawn enemies by length of attackword **WIP**
 * ~~varying y spawn~~
 * prevent enemies from spawning too close to eachother of each other (covering words)
 * looping background
 * sorting sprite render order by y level
 * ~~player resource bars~~
 * ~~progress bar~~
+	* add "checkpoints" to progress bar
 * start, end, loadout and midway screen
+* interface for creating a new "level" - customizable word difficulty range, length, num checkpoints et cet
 
 **FX**
 * ~~modular screenshake~~
