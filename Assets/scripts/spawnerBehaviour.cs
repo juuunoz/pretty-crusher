@@ -45,15 +45,15 @@ public class spawnerBehaviour : MonoBehaviour
         {
             int m = (l + r)/2;
 
-            mergeSort(x, l, m);
-            mergeSort(x, m+1, r);
+            //mergeSort(x, l, m);
+            //mergeSort(x, m+1, r);
 
-            merge(x, l, m, r);
+            //merge(x, l, m, r);
         }
         
     }
 
-    private void merge(string[] x, int l, int m,, int r){};
+    //private void merge(string[] x, int l, int m,, int r){};
 
     private void updateEnemyDisplays()
     { 
