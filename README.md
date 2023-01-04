@@ -2,6 +2,11 @@
 
 yet another genre infected by roguelite elements
 
+#### Legend
+
+**important tasks for completing the game**
+unnecessary tasks for making the game nice
+
 TODO
 
 **GRAPHICS**
@@ -12,6 +17,7 @@ TODO
  * bg parallax
 
 **CODING**
+* refactor code to move all game logic into one script
 * turn enemy into a superclass to house different types of enemies
 * ~~import and implement word bank~~
 	* ~~spawn enemies by length of attackword ~~
