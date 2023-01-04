@@ -4,8 +4,8 @@ yet another genre infected by roguelite elements
 
 #### Legend
 
-**important tasks for completing the game**
-unnecessary tasks for making the game nice
+ * **important tasks for completing the game**
+ * unnecessary tasks for making the game nice
 
 TODO
 
