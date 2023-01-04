@@ -80,7 +80,8 @@ public class spawnerBehaviour : MonoBehaviour
         updateEnemyDisplays();
     }
 
-    
+    public int getMinstrlen() { return minstrlen; }
+    public int getMaxstrlen() { return maxstrlen; }
 
     public void changeSpawnParameters(float minFreq, float maxFreq)  
     {

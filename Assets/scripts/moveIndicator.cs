@@ -11,7 +11,7 @@ public class moveIndicator : MonoBehaviour
     
     public int max;
     public float current;
-    public float increment;
+    public int increment;
     private float barPosition;
 
     // Start is called before the first frame update
@@ -22,16 +22,9 @@ public class moveIndicator : MonoBehaviour
         UnityEngine.Debug.Log(transform.position.z);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        
-    }
-
     public void startLevel() 
     {
-        StartCoroutine(startCountdown(30));
+        StartCoroutine(startCountdown(max));
     }
 
     IEnumerator startCountdown(int max) 
