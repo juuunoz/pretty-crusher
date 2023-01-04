@@ -1,6 +1,6 @@
 # roguelite-typer
 
-roguelite style typing game
+yet another genre infected by roguelite elements
 
 TODO
 
