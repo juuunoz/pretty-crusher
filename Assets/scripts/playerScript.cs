@@ -19,23 +19,51 @@ public class playerScript : MonoBehaviour
     public SpriteRenderer renderer;
     public Sprite[] playerSprites;
 
-    float speed = 1.5f; //how fast it shakes
-    float amount = 3.0f; //how much it shakes
     void Update()
     {
-        
-        transform.position = new Vector3(transform.position.x, Mathf.Sin(Time.time * speed) * amount, transform.position.z);
+        //note that health represents HP, 1 HP is half a heart
+        //and then numHearts represents heart containers. 1 numHearts is 1 heart container (two healths)
+
+        //transform.position = new Vector3(transform.position.x, Mathf.Sin(Time.time * speed) * amount, transform.position.z);
         if (health < 1)
         {
             Debug.Log("GAME OVER");
             // and some other behaviours to be added
         }
 
-        if (health > numHearts)
+        if (health > numHearts*2)
         {
             health = numHearts;
         }
 
+        //reset everything
+        foreach (Image heart in hearts) 
+        {
+            heart.enabled = false;
+        }
+
+        if (health % 2 == 0)
+        {
+            for (int i = 0; i < (health / 2); i++) 
+            {
+                hearts[i].sprite = fullHeart;
+                hearts[i].enabled = true;
+            }
+
+        }
+        else
+        {
+            for (int i = 0; i < (health / 2); i++)
+            {
+                hearts[i].sprite = fullHeart;
+                hearts[i].enabled = true;
+            }
+            hearts[health / 2].sprite = emptyHeart;
+            hearts[health / 2].enabled = true;
+
+        }
+
+        /**
         for (int i=0; i<hearts.Length; i++)
         {
             if (i < health)
@@ -56,13 +84,24 @@ public class playerScript : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+        **/
 
         goldDisplay.text = "gold: " + gold;
     }
 
+    int state = 0;
     public void changeSprite()
     {
-        renderer.sprite = playerSprites[Random.Range(0, 2)];
+        if (state == 0)
+        {
+            renderer.sprite = playerSprites[0];
+            state = 1;
+        }
+        else 
+        {
+            renderer.sprite = playerSprites[1];  
+            state = 0;
+        }
     }
 
     public void addGold(int x)

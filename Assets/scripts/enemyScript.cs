@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Security.Cryptography;
+using System.Collections.Specialized;
+using System;
 
 public class enemyScript : MonoBehaviour
 {
+    public TMP_FontAsset FontAsset;
     public TextMeshProUGUI display;
+    private TMP_Text displayText;
     public string attackText;
 
     public GameObject typer;
@@ -13,6 +18,7 @@ public class enemyScript : MonoBehaviour
     private playerScript player;
 
     private float movespeed;
+    private float ypos;
     private Vector3 movement;
     private string textColor;
     private string typedTextColor;
@@ -21,21 +27,28 @@ public class enemyScript : MonoBehaviour
     public string typed = "";
     public string remaining = "";
 
+
     void Start()
     {
         playerResources = GameObject.FindWithTag("playerResources");
         player =  playerResources.GetComponent<playerScript>();
         movespeed = 4f;
         movement = new Vector3(-movespeed, 0, 0);
-    
+
+        ypos = this.transform.position.y;
+
+        displayText = display.GetComponent<TMP_Text>();
+        displayText.font = FontAsset;
         textColor = "red";
         typedTextColor = "green";
 
+        StartCoroutine(oscillate()) ;
         
     }
 
     void Update()
     {
+        
         if (transform.position.x < playerResources.transform.position.x)
         {
             player.takeDamage();
@@ -47,8 +60,23 @@ public class enemyScript : MonoBehaviour
     
     }
 
+    IEnumerator oscillate()
+    {
+        float inc = 0.0f;
+        //UnityEngine.Debug.Log("coroutine");
+        while (true) 
+        {
+            inc += 0.01f;
+            transform.position = new Vector3(transform.position.x, (float)(ypos + Math.Sin(inc)), transform.position.z);
+            yield return null;
+        }
+        
+        
+    }
+
     public void die()
     {
+        //UnityEngine.Debug.Log("was attacked!");
         player.addGold(goldValue);
         Destroy(gameObject);
     }

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Diagnostics;
 
 public class detectTyping : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class detectTyping : MonoBehaviour
     private playerScript pscript;
 
     private List<enemyScript> enemiesOnScreen;
+    
 
     void Start()
     {
@@ -25,6 +28,7 @@ public class detectTyping : MonoBehaviour
     
         foreach (char c in Input.inputString)
         {
+            
             if ((c == '\b')) // delete the char
             {
                 if (typedWord.Length > 0)
@@ -34,6 +38,7 @@ public class detectTyping : MonoBehaviour
             }
             else if ((c == ' ') || (c == '\n') || (c == '\r')) //clear the char
             {
+                
                 if (destroyEnemy(typedWord))
                 {
                     pscript.changeSprite();
@@ -42,24 +47,29 @@ public class detectTyping : MonoBehaviour
             }
             else if (typedWord.Length <= maxTypedWords) //type the char
             {
-                typedWord += c;
+                typedWord += Char.ToLower(c); 
             }
         }
         display.text = typedWord;
+        //UnityEngine.Debug.Log("Typed: " + display.text);
     }
 
     private bool destroyEnemy(string word)
     {
+        
         //update how many enemies are on the screen
         enemiesOnScreen = enemySpawner.GetComponent<spawnerBehaviour>().enemiesOnScreen;
-
+        
         foreach (enemyScript x in enemiesOnScreen)
         {
-            if (x.attackText == word)
+            UnityEngine.Debug.Log(x.attackText.Length + " compared to what I entered: " + word.Length);
+            UnityEngine.Debug.Log(word.Equals(x.attackText));
+            if (word.Equals(x.attackText))
             {
-                x.die(); //dont worry.. this only kills one enemy with that word
+                UnityEngine.Debug.Log("hello");
+                x.die();
+                
                 enemiesOnScreen.Remove(x);
-                this.GetComponent<screenshake>().FireOnce(.5f);
                 return true;
             }
         }
