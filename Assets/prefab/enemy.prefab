@@ -365,5 +365,8 @@ MonoBehaviour:
   display: {fileID: 5457631267197022699}
   attackText: 
   typer: {fileID: 0}
+  movespeed: 6
+  textColor: black
+  typedTextColor: '#BD817D'
   typed: 
   remaining: 

@@ -24,7 +24,7 @@ public class spawnerBehaviour : MonoBehaviour
     private Quaternion enemyRotation = new Quaternion(0, 0, 0, 1);
     private Vector3 enemySpawnPosition;
 
-    bool currentlySpawning = false;
+    public bool stopSpawningSignal = false;
     float minFreq;
     float maxFreq;
     int minstrlen;
@@ -131,16 +131,7 @@ public class spawnerBehaviour : MonoBehaviour
 
     public void startSpawningEnemies() 
     {
-        if (currentlySpawning)
-        {
-            StopCoroutine("spawnEnemies");
-            currentlySpawning = false;
-        }
-        else 
-        {
-            StartCoroutine(spawnEnemies(minFreq, maxFreq, minstrlen, maxstrlen));
-            currentlySpawning = true;
-        }
+        StartCoroutine(spawnEnemies(minFreq, maxFreq, minstrlen, maxstrlen));
     }
 
     private IEnumerator spawnEnemies(float minFrequency, float maxFrequency, int minstrlen, int maxstrlen) //strlen stuff not implemented yet
@@ -148,6 +139,11 @@ public class spawnerBehaviour : MonoBehaviour
         //remove minstrlen and maxstrlen, get a value from a given list<String> instead, keep this string updated with every call to the change function
         while (true) 
         {
+            if (stopSpawningSignal) 
+            {
+                stopSpawningSignal = false;
+                yield break;
+            }
             string word = null;
             do
             {

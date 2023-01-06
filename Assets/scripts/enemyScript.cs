@@ -17,11 +17,11 @@ public class enemyScript : MonoBehaviour
     private GameObject playerResources;
     private playerScript player;
 
-    private float movespeed;
+    public float movespeed;
     private float ypos;
     private Vector3 movement;
-    private string textColor;
-    private string typedTextColor;
+    public string textColor;
+    public string typedTextColor;
     private int goldValue = 5;
 
     public string typed = "";
@@ -32,15 +32,13 @@ public class enemyScript : MonoBehaviour
     {
         playerResources = GameObject.FindWithTag("playerResources");
         player =  playerResources.GetComponent<playerScript>();
-        movespeed = 4f;
+        //movespeed = 8f;
         movement = new Vector3(-movespeed, 0, 0);
 
         ypos = this.transform.position.y;
 
         displayText = display.GetComponent<TMP_Text>();
         displayText.font = FontAsset;
-        textColor = "red";
-        typedTextColor = "green";
 
         StartCoroutine(oscillate()) ;
         
