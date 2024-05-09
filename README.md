@@ -1,4 +1,4 @@
-## To Run
+### To Run
 1. Download the .exe file from https://github.com/juuunoz/pretty-crusher-exe
 2. While keeping the .exe file in the folder it came in, run it
 3. Profit
